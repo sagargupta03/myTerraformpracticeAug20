@@ -1,13 +1,12 @@
 # Download the latest Ghost image
-resource "docker_image" "image_id" {
-  name = "ghost:latest"
+resource "docker_image" "my_image_id" {
+  name = "ghost:alpine"  #changed image to alpine
 }
-
 # Start the Container
-resource "docker_container" "container_id" {
+resource "docker_container" "my_container_id" {
   name  = "blog"
   # referring to other resource is interpolation
-  image = docker_image.image_id.latest
+  image = docker_image.my_image_id.latest
   ports {
     internal = "2368"
     external = "80"
